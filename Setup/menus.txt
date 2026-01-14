@@ -1,8 +1,7 @@
 ### 'root' ###
 1 'Web Attack'
-2 'Crypto Analysis'
-3 'Zip-file Bruteforce'
-4 'Sniffing'
+2 'Zip-file Bruteforce'
+3 'Sniffing'
 99 'Exit'
 
 ### 'Web Attack' ###

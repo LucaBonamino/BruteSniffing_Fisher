@@ -1,3 +1,6 @@
+import time
+
+
 class Zip_fileBruteforce:
 
     @staticmethod
@@ -11,3 +14,4 @@ def zip_bruteForce():
     :return: void
     """
     print("This functionality is has been temporarily disabled")
+    time.sleep(2)

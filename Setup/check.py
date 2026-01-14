@@ -1,10 +1,18 @@
 import os
+import re
 import sys
 import time
 from importlib import import_module
+from pathlib import Path
 
 import Setup.setup as setup
 from utils.version import get_version
+
+
+IMPORT_ALIASES = {
+    "beautifulsoup4": "bs4",
+    "python-nmap": "nmap",
+}
 
 
 def read_libs():
@@ -32,21 +40,24 @@ def check(fun):
     """
 
     def wrapper():
+        logs_dir = Path('Logs')
+        if not logs_dir.is_dir():
+            print('[-] Logs directory does not exist, creating it')
+            os.mkdir(str(logs_dir))
+
         mod = list(read_requirements())
         exceptions = []
         for item in mod:
             try:
-                if item and "#" != item[0]:
-                    if item[:3] == "git":
-                        import_module(item.split("/")[-1].split("@")[0])
-                    else:
-                        pkg = item.split("==")
-                        if pkg[0] == "beautifulsoup4":
-                            import_module("bs4")
-                        elif pkg[0] == 'python-nmap':
-                            import_module("nmap")
-                        else:
-                            import_module(pkg[0])
+                line = item.split("#", 1)[0].strip()
+                if not line:
+                    continue
+
+                pkg = re.split(r"[<>=!~]+", line, maxsplit=1)[0]
+                module_name = IMPORT_ALIASES.get(pkg, pkg)
+
+                import_module(module_name)
+
             except ImportError:
                 exceptions.append(item)
 
@@ -71,8 +82,10 @@ def check(fun):
             if str(a) == 'y':
                 os.system(f"python -m pip install -r requirements.txt")
             elif a == 'n':
-                os.execv(sys.executable, [sys.executable] + sys.argv)
-                sys.exit(0)
+                # os.execv(sys.executable, [sys.executable] + sys.argv)
+                print("[-] Install all packages if you want all functionalities to work")
+                time.sleep(2)
+                return fun()
             else:
                 print('answer not valid')
                 print('You need to answer yes (y) or no (n)')
