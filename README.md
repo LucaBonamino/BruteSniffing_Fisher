@@ -18,7 +18,7 @@ It allows you do to:
     * Information gathering
     * Web Server Bruteforcing
     * Cloning
-    * Fishing
+    * Fishing4
 
 At the moment only enrcyption and decryption by the two schemas are possible, mathematical attacks on RSA will come in
 the further commits. ***The RSA encryption scheme does not work for big keys, this is because the key is stored in an
@@ -44,9 +44,6 @@ Libraries to install:
 * netaddr
 * python-nmap
 * lxml
-* crypto_pkg package for the cryptography ( still by me - https://github.com/programmingAthlete/crypto_pkg) - I am
-  currently looking for a solution to use the SageMath library (crypto schemes and attack work well with it) and
-  automatise its installation in python venvs - I think that docker is the solution.
 
 ## Structure
 
