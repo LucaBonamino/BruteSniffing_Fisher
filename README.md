@@ -19,9 +19,6 @@ It allows you do to:
     * Web Server Bruteforcing
     * Cloning
     * Fishing
-* Crypto Analysis
-    * RSA encryption schema
-    * DGHV encryption schema with public key compression
 
 At the moment only enrcyption and decryption by the two schemas are possible, mathematical attacks on RSA will come in
 the further commits. ***The RSA encryption scheme does not work for big keys, this is because the key is stored in an

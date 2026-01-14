@@ -16,3 +16,5 @@ tests/__pycache__
 utils/__pycache__
 Setup/__pycache__
 **/__pycache__/
+
+.python_version
