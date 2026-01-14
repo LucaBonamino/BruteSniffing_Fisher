@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
 
+from modules.Attack.BruteForce.bruteforce import Bruteforce
 from modules.Attack.core import Core
 
 
@@ -15,7 +16,9 @@ class TestCoreClass(unittest.TestCase):
         self.assertEqual(core.class_, "Bruteforce")
         self.assertEqual(core.module, 'bruteforce')
 
-    @mock.patch("modules.Attack.BruteForce.bruteforce.run", mock_fun)
+
     def test_core_run(self):
-        bruteforce = Core("Bruteforce")
-        bruteforce.run()
+        with mock.patch.object(Bruteforce, "run") as mock_method:
+            bruteforce = Core("Bruteforce")
+            bruteforce.run()
+            mock_method.assert_called_once()
