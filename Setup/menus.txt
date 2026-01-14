@@ -12,9 +12,3 @@
 4 'Fishing'
 98 'Back'
 99 'Exit'
-
-### 'Crypto Analysis' ###
-1 'Rsa'
-2 'Dghv'
-98 'Back'
-99 'Exit'
